@@ -38,37 +38,17 @@
 </template>
 
 <script setup lang="ts">
-import { useSteamApi } from '@/hooks/useSteamApi';
+import { SteamApiList, useSteamGet } from '@/hooks/useSteam';
 import { onMounted, ref } from 'vue';
 
 const pending = ref(true)
 
-type SteamParameters = {
-    name: string,
-    type: string,
-    optional: boolean,
-    description: string
-}
-type SteamMethods = {
-    name: string,
-    version: string,
-    httpmethod: 'GET' | 'POST',
-    parameters: SteamParameters[]
-}
-type SteamInterface = {
-    name: string,
-    methods: SteamMethods[],
-}
-type SteamApiList = {
-    interfaces: SteamInterface[]
-}
 const list = ref<SteamApiList>()
 
 onMounted(() => {
-    useSteamApi({
+    useSteamGet({
         interfaceName: '/api/ISteamWebAPIUtil',
         methodName: 'GetSupportedAPIList',
-        method: 'get',
         steamid: '76561198298936075'
     }).then(res => {
         console.log(res.data);
@@ -78,4 +58,4 @@ onMounted(() => {
 })
 </script>
 
-<style scoped></style>
+<style scoped></style>@/hooks/useSteamGet

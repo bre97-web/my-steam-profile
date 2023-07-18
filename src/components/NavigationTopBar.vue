@@ -3,6 +3,9 @@
         <router-link to="/">
             Overview
         </router-link>
+        <router-link to="/friends">
+            Friends
+        </router-link>
         <router-link to="/api-list">
             Apis
         </router-link>

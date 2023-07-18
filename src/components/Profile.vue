@@ -1,10 +1,12 @@
 <template>
-    <div class="border 2-12 h-12 rounded-xl ">
+    <div>
+
     </div>
 </template>
 
 <script setup lang="ts">
 
+const username = 
 </script>
 
 <style scoped>
