@@ -1,14 +1,6 @@
 <template>
-    <div class="px-4 py-2">
-        <router-link to="/">
-            Overview
-        </router-link>
-        <router-link to="/friends">
-            Friends
-        </router-link>
-        <router-link to="/api-list">
-            Apis
-        </router-link>
+    <div class="px-4 py-2 w-full">
+        <slot></slot>
     </div>
 </template>
 

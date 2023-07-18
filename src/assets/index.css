@@ -4,6 +4,9 @@
 @tailwind variants;
 
 @layer base {
+    ::-webkit-scrollbar {
+        @apply hidden;
+    }
     h1,
     h2,
     h3,
