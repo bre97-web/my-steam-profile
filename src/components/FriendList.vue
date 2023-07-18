@@ -19,9 +19,7 @@ import { onMounted, ref } from 'vue';
 const friends = ref<SteamFriendsResponse | null>(null)
 
 onMounted(() => {
-    useSteamGet({
-        interfaceName: '/api/ISteamUser',
-        methodName: 'GetFriendList',
+    useSteamGet('/api/ISteamUser', 'GetFriendList', {
         steamid: '76561198298936075'
     }).then(res => {
         console.log(res.data);

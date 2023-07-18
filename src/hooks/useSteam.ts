@@ -15,14 +15,12 @@ export type SteamParameters = {
     optional: boolean,
     description: string
 }
-
 export type SteamMethods = {
     name: string,
     version: string,
     httpmethod: 'GET' | 'POST',
     parameters: SteamParameters[]
 }
-
 export type SteamInterface = {
     name: string,
     methods: SteamMethods[],
@@ -43,13 +41,27 @@ export type SteamFriends = {
 export type SteamFriendsResponse = {
     friendslist: SteamFriends
 }
-
+export type SteamGame = {
+    appid: string
+    img_icon_url: string
+    name: string
+    playtime_2weeks: number
+    playtime_forever: number
+    playtime_linux_forever: number
+    playtime_mac_forever: number
+    playtime_windows_forever: number
+}
+export type SteamRecentGames = {
+    games: SteamGame[],
+    total_count: number
+}
+export type SteamRecentGameResponse = {
+    response: SteamRecentGames
+}
 
 const KEY = '1A092C6AD7E6B2FA4B2C09DEE5849D33'
 
-export async function useSteamGet({ interfaceName, methodName, steamid, version = 'v1', appid = undefined, format = 'json' }: {
-    interfaceName: string,
-    methodName: string,
+export async function useSteamGet(interfaceName: string, methodName: string, { steamid, version = 'v1', appid = undefined, format = 'json' }: {
     steamid: string,
     version?: 'v1' | 'v2',
     appid?: string,
