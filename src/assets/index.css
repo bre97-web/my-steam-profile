@@ -4,6 +4,21 @@
 @tailwind variants;
 
 @layer base {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        @apply text-[var(--md-sys-color-primary)] font-bold;
+    }
+    p {
+        @apply text-[var(--md-sys-color-secondary)] font-bold;
+    }
+    th,
+    td {
+        @apply text-[var(--md-sys-color-on-surface)] text-sm;
+    }
     :root {
         --md-sys-color-background: #f2fcee;
         --md-sys-color-on-background: #151e15;
@@ -84,7 +99,9 @@
       }
 }
 @layer components {
-
+    .elevation {
+        --md-sys-elevation-level: 3;
+    }
 }
 @layer utilities {
 

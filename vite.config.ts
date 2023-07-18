@@ -31,5 +31,16 @@ export default defineConfig({
     sourcemap: true,
     manifest: true,
     minify: 'esbuild',
-  }
+  },
+  server: {
+    
+    proxy: {
+      '/api': {
+        target: 'https://api.steampowered.com',
+        changeOrigin: true,
+        ws: true,
+        rewrite: (path) => path.replace(/\/api\//, ''),
+      }
+    }
+  },
 })
