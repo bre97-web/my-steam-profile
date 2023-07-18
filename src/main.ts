@@ -12,4 +12,7 @@ import '@/assets/index.css'
 import 'material-symbols'
 import '@/assets/material-web'
 
-createApp(App).mount('#app')
+import router from '@/router/index'
+
+const app = createApp(App)
+app.use(router).mount('#app')

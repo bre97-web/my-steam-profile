@@ -1,16 +1,14 @@
 <template>
   <div class="bg-[var(--md-sys-color-background)]">
-
+    <NavigationTopBar></NavigationTopBar>
     <main class="container mx-auto pt-16 min-h-screen">
-      <ApiList></ApiList>
+      <router-view></router-view>
     </main>
   </div>
 </template>
 
 <script setup lang="ts">
-import ApiList from './components/ApiList.vue';
-
-
+import NavigationTopBar from '@/components/NavigationTopBar.vue'
 </script>
 
 <style scoped>
