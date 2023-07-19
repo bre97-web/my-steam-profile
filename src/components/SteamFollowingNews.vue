@@ -4,7 +4,7 @@
             <li v-for="e in currentNews" class="p-6 overflow-scroll hover:bg-[var(--md-sys-color-surface-container-low)]">
                 <div class="flex gap-2 items-start justify-start">
                     <div class="flex-none rounded-full overflow-clip w-10 h-10">
-                        <img :src="useSteamMediaUrl(e.appid, MediaJpgType.hero)" alt="2">
+                        <img onerror="this.style.display='none'" :src="useSteamMediaUrl(e.appid, MediaJpgType.hero)" alt="2">
                     </div>
                     <section>
                         <p class="font-bold">{{ games.getGameById(e.appid)?.name }}</p>
@@ -32,7 +32,7 @@ import { computed, onMounted, ref } from 'vue';
 const news = useSteamNewsStore()
 const games = useGameStore()
 
-const currentMaxItemNumber = ref(10)
+const currentMaxItemNumber = ref(100)
 const currentNews = computed(() => news.getNews.following.slice(0, currentMaxItemNumber.value))
 
 onMounted(() => {

@@ -45,8 +45,6 @@ const useGameStore = defineStore('steam_game_store', {
                     .response
                     .games
                     .forEach(e => this.games[this.games.length] = e)
-                console.log(this.games);
-                    
             })
         },
         getGameById(id: string) {

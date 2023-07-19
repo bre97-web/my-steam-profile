@@ -91,6 +91,8 @@ export type SteamPlayer = {
     realname: string,
     steamid: string,
     timecreated: number,
+    gameid: string,
+    gameextrainfo: string
 }
 export type SteamPlayers = {
     players: SteamPlayer[]
