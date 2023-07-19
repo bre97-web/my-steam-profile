@@ -40,6 +40,12 @@ export default defineConfig({
         changeOrigin: true,
         ws: true,
         rewrite: (path) => path.replace(/\/api\//, ''),
+      }, 
+      '/api/media': {
+        target: 'http://media.steampowered.com',
+        changeOrigin: true,
+        ws: true,
+        rewrite: (path) => path.replace(/\/api\/\/media/, ''),
       }
     }
   },

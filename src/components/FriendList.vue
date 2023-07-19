@@ -1,8 +1,7 @@
 <template>
-    <ul v-if="friends !== null">
-        <li v-for="e in friends.friendslist.friends" :key="e.steamid">
+    <ul v-if="friends.getFriendsAll.length !== 0">
+        <li v-for="e in friends.getFriendsAll" :key="e.steamid">
             <h1>
-
                 {{ e.steamid }}
                 {{ e.relationship }}
                 {{ e.friend_since }}
@@ -12,20 +11,27 @@
 </template>
 
 <script setup lang="ts">
-import { useSteamGet, SteamFriendsResponse } from '@/hooks/useSteam';
-import { onMounted, ref } from 'vue';
+import { onMounted } from 'vue';
+import { useFriendStore } from '@/store/useFriendStore'
+import { usePlayerStore } from '@/store/usePlayerStore'
 
+const friends = useFriendStore()
+const players = usePlayerStore()
 
-const friends = ref<SteamFriendsResponse | null>(null)
+const init = async () => {
+    await friends.request()
+
+    let ids = friends.getFriendsAll.map(e => e.steamid)
+    
+    await players.request(ids)
+    
+    // console.log(players.getPlayersAll);
+}
 
 onMounted(() => {
-    useSteamGet('/api/ISteamUser', 'GetFriendList', {
-        steamid: '76561198298936075'
-    }).then(res => {
-        console.log(res.data);
-        
-        friends.value = res.data
-    })
+
+    init()
+    
 })
 </script>
 

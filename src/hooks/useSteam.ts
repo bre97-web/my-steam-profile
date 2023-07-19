@@ -38,6 +38,7 @@ export type SteamFriend = {
 export type SteamFriends = {
     friends: SteamFriend[]
 }
+
 export type SteamFriendsResponse = {
     friendslist: SteamFriends
 }
@@ -59,18 +60,48 @@ export type SteamRecentGameResponse = {
     response: SteamRecentGames
 }
 
+export type SteamPlayer = {
+    avatar: string,
+    avatarmedium: string,
+    avatarfull: string,
+    avatarhash: string,
+    communityvisibilitystate: number,
+    lastlogoff: number,
+    loccountrycode: number,
+    locstatecode: string,
+    loccityid: number,
+    personaname: string,
+    personastate: number,
+    personastateflags: number,
+    profileurl: string,
+    profilestate: number,
+    primaryclanid: string,
+    realname: string,
+    steamid: string,
+    timecreated: number,
+}
+export type SteamPlayers = SteamPlayer[]
+export type SteamPlayerSummariesResponse = {
+    response: SteamPlayers
+}
+
 const KEY = '1A092C6AD7E6B2FA4B2C09DEE5849D33'
 
-export async function useSteamGet(interfaceName: string, methodName: string, { steamid, version = 'v1', appid = undefined, format = 'json' }: {
-    steamid: string,
+export async function useSteamGet(interfaceName: string, methodName: string, { version = 'v1', appid = undefined, param = {} }: {
     version?: 'v1' | 'v2',
     appid?: string,
-    format?: 'json' | 'xml' | 'vdf'
+    param?: any
 }) {
-    return await axios.get(`${interfaceName}/${methodName}/${version}`, {
+    return await axios.get(`/api/${interfaceName}/${methodName}/${version}`, {
         params: {
-            steamid: steamid,
+            ...param,
             key: KEY
         }
     })
 }
+
+export async function useSteamMediaGet(appid: string) {
+    return await axios.get(`https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/header.jpg`)
+}
+
+export const useSteamMediaUrl = (appid: string, filename: string) => `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/${filename}`

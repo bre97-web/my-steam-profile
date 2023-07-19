@@ -1,33 +1,39 @@
 <template>
-    <div v-if="games !== null">
+    <ul v-if="games !== null" class="flex gap-2">
         <li v-for="e in games.response.games" :key="e.appid">
-            <h1>
-
-                {{ e.appid }}
-                {{ e.name }}
-                {{ e.img_icon_url }}
-                {{ e.playtime_2weeks }}
-            </h1>
+            <Card :game="e"></Card>
         </li>
-    </div>
+    </ul>
 </template>
 
-<script setup lang="ts">
-import { useSteamGet, SteamRecentGameResponse } from '@/hooks/useSteam';
+<script setup lang="tsx">
+import { useSteamGet, SteamRecentGameResponse, SteamGame, useSteamMediaUrl } from '@/hooks/useSteam';
 import { onMounted, ref } from 'vue';
 
 
 const games = ref<SteamRecentGameResponse | null>(null)
 
+const request = async () => {
+    games.value = await (await useSteamGet('IPlayerService', 'GetRecentlyPlayedGames', {
+        param: {
+            steamid: '76561198298936075'
+        }
+    })).data
+}
+
 onMounted(() => {
-    useSteamGet('/api/IPlayerService', 'GetRecentlyPlayedGames', {
-        steamid: '76561198298936075'
-    }).then(res => {
-        console.log(res.data);
-        
-        games.value = res.data
-    })
+    request()
 })
+
+
+const Card = ({game}: {game: SteamGame}) => {
+    return (
+        <div class="rounded-xl border max-w-xs overflow-clip">
+            <img src={useSteamMediaUrl(game.appid, 'header.jpg')}></img>
+            <h1 class="text-center">{ game.name }</h1>
+        </div>
+    )
+}
 </script>
 
 <style scoped>

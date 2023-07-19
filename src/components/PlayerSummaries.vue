@@ -1,6 +1,6 @@
 <template>
-    <div class="border w-12 h-12 rounded-xl ">
-        
+    <div>
+
     </div>
 </template>
 

@@ -2,7 +2,10 @@
     <div>
         <ProfileCardAvatar></ProfileCardAvatar>
         
-        <RecentGames></RecentGames>
+        <div>
+            <h1 class="text-4xl">Recent Games</h1>
+            <RecentGames></RecentGames>
+        </div>
     </div>
 </template>
 
