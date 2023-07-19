@@ -17,11 +17,15 @@ const useThemeStore = defineStore('theme_store', () => {
     const toggleDark = () => {
         theme.isDark = !theme.isDark
     }
+    const syncDarkTheme = () => {
+        document.documentElement.classList[theme.isDark ? 'add': 'remove']('dark')
+    }
 
     return {
         theme,
         setDark,
-        toggleDark,        
+        toggleDark,
+        syncDarkTheme,     
     }
 }, {
     persist: true,

@@ -46,10 +46,7 @@ const pending = ref(true)
 const list = ref<SteamApiList>()
 
 onMounted(() => {
-    useSteamGet('ISteamWebAPIUtil', 'GetSupportedAPIList', {
-        steamid: '76561198298936075'
-    }).then(res => {
-        console.log(res.data);
+    useSteamGet('ISteamWebAPIUtil', 'GetSupportedAPIList').then(res => {
         list.value = res.data.apilist
         pending.value = false
     })

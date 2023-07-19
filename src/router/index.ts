@@ -3,6 +3,7 @@ import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router"
 import index from '@/views/index.vue'
 import apiList from "@/views/apiList.vue"
 import friends from '@/views/friends.vue'
+import settings from '@/views/settings.vue'
 
 const routes: RouteRecordRaw[] = [
     {
@@ -14,6 +15,11 @@ const routes: RouteRecordRaw[] = [
         path: '/friends',
         name: 'Friends',
         component: friends
+    },
+    {
+        path: '/settings',
+        name: 'Settings',
+        component: settings
     },
     {
         path: '/api-list',

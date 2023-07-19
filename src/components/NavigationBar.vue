@@ -27,6 +27,11 @@ const routerList: RouterLink[] = [
         icon: 'group'
     },
     {
+        url: '/settings',
+        label: 'Settings',
+        icon: 'settings'
+    },
+    {
         url: '/api-list',
         label: 'API List',
         icon: 'list'

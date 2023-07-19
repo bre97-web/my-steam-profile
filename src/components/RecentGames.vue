@@ -7,7 +7,7 @@
 </template>
 
 <script setup lang="tsx">
-import { useSteamGet, SteamRecentGameResponse, SteamGame, useSteamMediaUrl } from '@/hooks/useSteam';
+import { useSteamGet, SteamRecentGameResponse, SteamGame, useSteamMediaUrl, MediaJpgType } from '@/hooks/useSteam';
 import { onMounted, ref } from 'vue';
 
 
@@ -29,7 +29,7 @@ onMounted(() => {
 const Card = ({game}: {game: SteamGame}) => {
     return (
         <div class="rounded-xl border max-w-xs overflow-clip">
-            <img src={useSteamMediaUrl(game.appid, 'header.jpg')}></img>
+            <img src={useSteamMediaUrl(game.appid, MediaJpgType.header)}></img>
             <h1 class="text-center">{ game.name }</h1>
         </div>
     )

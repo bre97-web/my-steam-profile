@@ -142,9 +142,8 @@ export type SteamAppNewsResponse = {
 
 const KEY = '1A092C6AD7E6B2FA4B2C09DEE5849D33'
 
-export async function useSteamGet(interfaceName: string, methodName: string, { version = 'v1', appid = undefined, param = {} }: {
+export async function useSteamGet(interfaceName: string, methodName: string, { version = 'v1', param = {} }: {
     version?: 'v1' | 'v2',
-    appid?: string,
     param?: any
 } = {}) {
     return await axios.get(`/api/${interfaceName}/${methodName}/${version}`, {
