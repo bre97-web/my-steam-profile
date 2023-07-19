@@ -80,7 +80,9 @@ export type SteamPlayer = {
     steamid: string,
     timecreated: number,
 }
-export type SteamPlayers = SteamPlayer[]
+export type SteamPlayers = {
+    players: SteamPlayer[]
+}
 export type SteamPlayerSummariesResponse = {
     response: SteamPlayers
 }

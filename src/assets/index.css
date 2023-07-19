@@ -16,7 +16,7 @@
         @apply text-[var(--md-sys-color-primary)] font-bold;
     }
     p {
-        @apply text-[var(--md-sys-color-secondary)] font-bold;
+        @apply text-[var(--md-sys-color-secondary)];
     }
     th,
     td {

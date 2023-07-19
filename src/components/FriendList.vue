@@ -1,35 +1,32 @@
 <template>
-    <ul v-if="friends.getFriendsAll.length !== 0">
-        <li v-for="e in friends.getFriendsAll" :key="e.steamid">
-            <h1>
-                {{ e.steamid }}
-                {{ e.relationship }}
-                {{ e.friend_since }}
-            </h1>
+    <ul v-if="friends.getFriendsSummaries.length !== 0" class="flex flex-col gap-4">
+        <li v-for="e in friends.getFriendsSummaries" :key="e.steamid">
+            <div class="flex items-center justify-start gap-2">
+
+                <PlayerAvatar :avatar="e.avatar"></PlayerAvatar>
+                
+                <section>
+                    <h1>{{ e.personaname }}</h1>
+                    <p class="text-xs">{{ moment(e.lastlogoff, 'X').fromNow() }}</p>
+                </section>
+            </div>
         </li>
     </ul>
 </template>
 
 <script setup lang="ts">
 import { onMounted } from 'vue';
-import { useFriendStore } from '@/store/useFriendStore'
-import { usePlayerStore } from '@/store/usePlayerStore'
+import { useFriendListStore } from '@/store/useFriendListStore'
+import PlayerAvatar from './PlayerAvatar.vue';
+import moment from 'moment'
 
-const friends = useFriendStore()
-const players = usePlayerStore()
+const friends = useFriendListStore()
 
 const init = async () => {
     await friends.request()
-
-    let ids = friends.getFriendsAll.map(e => e.steamid)
-    
-    await players.request(ids)
-    
-    // console.log(players.getPlayersAll);
 }
 
 onMounted(() => {
-
     init()
     
 })
