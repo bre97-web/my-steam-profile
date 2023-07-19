@@ -4,31 +4,37 @@ import { defineStore } from "pinia";
 
 const useGameStore = defineStore('steam_game_store', {
     state: () => ({
-        games: [] as SteamGame[] | SteamApp[]
+        games: {
+            allApps: [] as SteamApp[],
+            owned: [] as SteamGame[],
+            recent: [] as SteamGame[],
+        },
     }),
     getters: {
         getGames: (s) => s.games,
+        getRecentGames: (s) => s.games.recent,
+        getOwnedGames: (s) => s.games.owned,
     },
     actions: {
         requestAppList() {
-            if(this.games.length !== 0) {
+            if(this.games.allApps.length !== 0) {
                 return 
             }
-
+            this.games.allApps = []
             useSteamGet('ISteamApps', 'GetAppList', {
                 version: 'v2'
             }).then(res => {
                 (res.data as SteamAppListResponse)
                     .applist
                     .apps
-                    .forEach(e => this.games[this.games.length] = e)
+                    .forEach(e => this.games.allApps[this.games.allApps.length] = e)
             })
         },
         requestPlayerOwnedAppList() {
-            if(this.games.length !== 0) {
+            if(this.games.owned.length !== 0) {
                 return 
             }
-
+            this.games.owned = []
             useSteamGet('IPlayerService', 'GetOwnedGames', {
                 param: {
                     steamid: getAccount().steamid,
@@ -41,11 +47,24 @@ const useGameStore = defineStore('steam_game_store', {
                 (res.data as SteamOwnedGamesResponse)
                     .response
                     .games
-                    .forEach(e => this.games[this.games.length] = e)
+                    .forEach(e => this.games.owned[this.games.owned.length] = e)
+            })
+        },
+        requestPlayerRecentAppList() {
+            if(this.games.recent.length !== 0) {
+                return
+            }
+            this.games.recent = []
+            useSteamGet('IPlayerService', 'GetRecentlyPlayedGames', {
+                param: {
+                    steamid: '76561198298936075'
+                }
+            }).then(res => {
+                this.games.recent.push(...(res.data as SteamOwnedGamesResponse).response.games)
             })
         },
         getGameById(id: string) {
-            return this.games.find(e => e.appid === id)
+            return this.games.owned.find(e => e.appid === id)
         },
     }
 })

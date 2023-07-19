@@ -122,6 +122,22 @@
     .icon-filled {
         font-variation-settings: 'FILL' 1;
     }
+
+    .window,
+    .window > * {
+        transition: all 0.15s;
+    }
+    .innerWindow {
+        @apply opacity-0 -bottom-full;
+    }
+    .window:hover > .innerWindow,
+    .window:focus > .innerWindow {
+        @apply opacity-100 bottom-0;
+    }
+    .window:hover > .scaleWindow,
+    .window:focus > .scaleWindow {
+        @apply scale-125;
+    }
 }
 @layer utilities {
 

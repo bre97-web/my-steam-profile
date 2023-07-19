@@ -20,7 +20,6 @@
     "pinia": "^2.1.4",
     "pinia-plugin-persistedstate": "^3.1.0",
     "postcss": "^8.4.26",
-    "scroll-back-button": "^0.0.1",
     "tailwindcss": "^3.3.3",
     "vue": "^3.3.4",
     "vue-router": "^4.2.4"

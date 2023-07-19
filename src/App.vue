@@ -9,7 +9,7 @@
       </div>      
     </main>
 
-    <div class="hidden lg:block w-full max-w-md bg-red-300">1</div>
+    <div class="hidden lg:block w-full max-w-md">1</div>
   </div>
 </template>
 

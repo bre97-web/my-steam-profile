@@ -30,7 +30,6 @@ import { useGameStore } from '@/store/useGameStore';
 import { useSteamNewsStore } from '@/store/useSteamNewsStore';
 import moment from 'moment';
 import { computed, onMounted, ref } from 'vue';
-import 'scroll-back-button'
 
 const news = useSteamNewsStore()
 const games = useGameStore()
