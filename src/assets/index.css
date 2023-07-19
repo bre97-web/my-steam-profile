@@ -100,10 +100,17 @@
         --md-sys-color-error-container: #93000a;
         --md-sys-color-on-error-container: #ffdad6;
       }
+
+      md-icon {
+        @apply select-none;
+      }
 }
 @layer components {
     .elevation {
         --md-sys-elevation-level: 3;
+    }
+    .icon-filled {
+        font-variation-settings: 'FILL' 1;
     }
 }
 @layer utilities {

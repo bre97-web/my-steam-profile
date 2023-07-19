@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@headlessui/vue": "^1.7.14",
     "@material/web": "^1.0.0-pre.13",
     "@vitejs/plugin-vue-jsx": "^3.0.1",
     "autoprefixer": "^10.4.14",

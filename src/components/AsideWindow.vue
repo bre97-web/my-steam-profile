@@ -1,6 +1,6 @@
 <template>
     <Transition>
-        <aside v-show="props.isOpen" class="fixed left-0 h-full w-full md:relative rounded-3xl bg-[var(--md-sys-color-surface-container-lowest)] p-4 mr-2 overflow-scroll md:w-64 max-w-screen-sm">
+        <aside v-show="props.isOpen" class="fixed left-0 h-full w-full md:relative rounded-3xl bg-[var(--md-sys-color-surface-container-lowest)] p-4 mr-2 overflow-scroll md:w-64">
             <div
                 class="relative"
             >

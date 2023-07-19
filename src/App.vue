@@ -1,52 +1,38 @@
 <template>
-  <div class="relative flex flex-col bg-[var(--md-sys-color-background)] h-screen w-full">
-    <nav ref="topNavRef" class="sticky top-0 right-0 w-full z-30 bg-[var(--md-sys-color-background)]">
-      <NavigationTopBar>
-        <div class="flex items-center justify-between">
-          <div>
-            <router-link to="/">
-              Overview
-            </router-link>
-            <router-link to="/friends">
-              Friends
-            </router-link>
-            <router-link to="/api-list">
-              Apis
-            </router-link>
-          </div>
-          <div>
-            <md-standard-icon-button @click="isOpenAside = !isOpenAside">
-              <md-icon>settings</md-icon>
-            </md-standard-icon-button>
-          </div>
-        </div>
-      </NavigationTopBar>
-    </nav>
+  <div class="relative container mx-auto flex h-screen bg-[var(--md-sys-color-background)]">
+    <NavigationBar>
+      <md-standard-icon-button @click="isOpenAside = !isOpenAside">
+        <md-icon>settings</md-icon>
+      </md-standard-icon-button>
+    </NavigationBar>
 
-    <div class="flex flx-grow">
-      <main
-        class="w-full bg-[var(--md-sys-color-surface-container-lowest)] rounded-none md:rounded-3xl md:mx-4 flex">
-        <div class="w-full overflow-scroll" :style="EffectiveHeight">
-          <router-view></router-view>
-        </div>
-      </main>
+    <main class="flex flex-col flex-grow bg-[var(--md-sys-color-background)] min-h-screen">
+      <PageTitle></PageTitle>
+      <div class="w-full h-full bg-[var(--md-sys-color-surface-container-lowest)] overflow-scroll">
+        <router-view></router-view>
+      </div>      
+    </main>
 
-      <AsideWindow :is-open="isOpenAside" :set-is-open="(e: boolean) => isOpenAside = e" class="overflow-scroll" :style="EffectiveHeight">
-        <DarkSwitch></DarkSwitch>
-      </AsideWindow>
-    </div>
+    <div class="hidden lg:block w-full max-w-md bg-red-300">1</div>
+
+    <AsideWindow :is-open="isOpenAside" :set-is-open="(e: boolean) => isOpenAside = e" class="overflow-scroll">
+      <DarkSwitch></DarkSwitch>
+    </AsideWindow>
   </div>
 </template>
 
 <script setup lang="ts">
-import NavigationTopBar from '@/components/NavigationTopBar.vue'
+import NavigationBar from '@/components/NavigationBar.vue'
 import { computed, onMounted, onUnmounted, ref } from 'vue';
 import AsideWindow from './components/AsideWindow.vue';
 import DarkSwitch from './components/DarkSwitch.vue';
+import PageTitle from './components/PageTitle.vue';
+
+
+
+
 
 const isOpenAside = ref(false)
-
-
 const topNavRef = ref()
 var innerHeight = ref(window.innerHeight)
 const updateInnerHeight = () => {

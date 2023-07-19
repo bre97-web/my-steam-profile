@@ -7,14 +7,17 @@ import friends from '@/views/friends.vue'
 const routes: RouteRecordRaw[] = [
     {
         path: '/',
+        name: 'Home',
         component: index
     },
     {
         path: '/friends',
+        name: 'Friends',
         component: friends
     },
     {
         path: '/api-list',
+        name: 'API List',
         component: apiList
     }
 ]
