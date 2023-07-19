@@ -1,13 +1,13 @@
 <template>
-  <div class="relative container mx-auto flex h-screen bg-[var(--md-sys-color-background)]">
+  <div class="relative container mx-auto flex flex-col-reverse md:flex-row h-screen bg-[var(--md-sys-color-background)]">
     <NavigationBar>
       <md-standard-icon-button @click="isOpenAside = !isOpenAside">
         <md-icon>settings</md-icon>
       </md-standard-icon-button>
     </NavigationBar>
 
-    <main class="flex flex-col flex-grow bg-[var(--md-sys-color-background)] w-full overflow-clip min-h-screen">
-      <PageTitle></PageTitle>
+    <main class="border-x flex flex-col flex-grow w-full overflow-clip h-full md:min-h-screen">
+      <PageTitle class="hidden md:block pl-2 pb-2"></PageTitle>
       <div class="w-full h-full bg-[var(--md-sys-color-surface-container-lowest)] overflow-scroll">
         <router-view></router-view>
       </div>      

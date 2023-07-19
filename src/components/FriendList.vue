@@ -1,14 +1,17 @@
 <template>
-    <ul v-if="friends.getFriendsSummaries.length !== 0" class="flex flex-col gap-4">
-        <li v-for="e in friends.getFriendsSummaries" :key="e.steamid">
+    <ul v-if="friends.getFriendsSummaries.length !== 0" class="flex flex-col">
+        <li v-for="e in friends.getFriendsSummaries" :key="e.steamid" class="w-full h-full p-6 hover:bg-[var(--md-sys-color-surface-container-low)]">
             <div class="flex items-center justify-start gap-2">
 
-                <PlayerAvatar :avatar="e.avatar"></PlayerAvatar>
+                <div class="rounded-full overflow-clip w-10 h-10">
+                    <img :src="e.avatarmedium">
+                </div>
                 
                 <section>
                     <h1>{{ e.personaname }}</h1>
                     <p class="text-xs">{{ moment(e.lastlogoff, 'X').fromNow() }}</p>
                 </section>
+
             </div>
         </li>
     </ul>
@@ -17,7 +20,6 @@
 <script setup lang="ts">
 import { onMounted } from 'vue';
 import { useFriendListStore } from '@/store/useFriendListStore'
-import PlayerAvatar from './PlayerAvatar.vue';
 import moment from 'moment'
 
 const friends = useFriendListStore()

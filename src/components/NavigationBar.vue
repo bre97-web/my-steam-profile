@@ -1,10 +1,10 @@
 <template>
     <div class="px-4 py-2">
-        <div class="w-10 flex flex-col justify-between items-center h-full">
-            <div class="flex flex-col items-center justify-between gap-2">
+        <div class="flex md:flex-col justify-center md:justify-between items-center h-full">
+            <div class="flex md:flex-col w-full items-center justify-around md:justify-between gap-2">
                 <NavigationButton v-for="e in routerList" :router-item="e" :key="e.url"></NavigationButton>
             </div>
-            <div>
+            <div class="hidden md:block">
                 <slot></slot>
             </div>
         </div>
@@ -28,7 +28,7 @@ const routerList: RouterLink[] = [
     },
     {
         url: '/api-list',
-        label: 'Home',
+        label: 'API List',
         icon: 'list'
     },
 ]
