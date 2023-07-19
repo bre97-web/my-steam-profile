@@ -1,6 +1,7 @@
 <template>
     <ul v-if="friends.getFriendsSummaries.length !== 0" class="flex flex-col">
-        <li v-for="e in sortedSummaries" :key="e.steamid" class="w-full h-full p-6 hover:bg-[var(--md-sys-color-surface-container-low)]" :class="{'grayscale': e.personastate !== 1}">
+        <li v-for="e in sortedSummaries" :key="e.steamid" class="relative w-full h-full p-6" :class="{'grayscale': e.personastate !== 1}">
+            <md-ripple></md-ripple>
             <div class="flex items-center justify-start gap-2">
 
                 <div class="rounded-full overflow-clip w-10 h-10">

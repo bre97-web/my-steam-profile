@@ -1,7 +1,7 @@
 <template>
     <div>
         <TabGroup>
-            <TabList as="md-tabs" class="sticky top-0">
+            <TabList as="md-tabs" class="sticky top-0 z-50">
                 <Tab as="md-tab">Steam News</Tab>
                 <Tab as="md-tab">Following</Tab>
             </TabList>

@@ -14,7 +14,7 @@ export default defineConfig({
     vue({
       template: {
         compilerOptions: {
-          isCustomElement: (tag: string): boolean => tag.startsWith('md')
+          isCustomElement: (tag: string): boolean => tag.startsWith('md') || tag.includes('scroll-back-button')
         }
       }
     }),

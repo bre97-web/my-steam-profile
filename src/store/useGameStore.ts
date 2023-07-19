@@ -2,9 +2,6 @@ import { SteamApp, SteamAppListResponse, SteamGame, SteamOwnedGamesResponse, use
 import { getAccount } from "@/scripts/account";
 import { defineStore } from "pinia";
 
-/**
- * useFriendStore简单的保存了用户的好友列表, 包括用户的头像、姓名等信息
- */
 const useGameStore = defineStore('steam_game_store', {
     state: () => ({
         games: [] as SteamGame[] | SteamApp[]

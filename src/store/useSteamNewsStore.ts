@@ -41,9 +41,14 @@ const useSteamNewsStore = defineStore('steam_news_store', {
                         }
                     }).then(res => {
                         this.news.following.push(...(res.data as SteamAppNewsResponse).appnews.newsitems)
+
+                        this.sort()
                     })
                 })
             })
+        },
+        sort() {
+            this.news.following.sort((x, y) => y.date - x.date)
         }
     }
 })
