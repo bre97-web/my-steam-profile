@@ -39,13 +39,19 @@ export default defineConfig({
         target: 'https://api.steampowered.com',
         changeOrigin: true,
         ws: true,
-        rewrite: (path) => path.replace(/\/api\//, ''),
+        rewrite: (path) => path.replace(/\/api/, 'https://api.steampowered.com'),
       }, 
       '/api/media': {
         target: 'http://media.steampowered.com',
         changeOrigin: true,
         ws: true,
-        rewrite: (path) => path.replace(/\/api\/\/media/, ''),
+        rewrite: (path) => path.replace(/\/api\/media/, 'http://media.steampowered.com'),
+      },
+      '/api/store': {
+        target: 'http://store.steampowered.com/api',
+        changeOrigin: true,
+        ws: true,
+        rewrite: (path) => path.replace(/\/api\/\/store/, 'http://store.steampowered.com/api'),
       }
     }
   },

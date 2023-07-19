@@ -25,9 +25,19 @@ export type SteamInterface = {
     name: string,
     methods: SteamMethods[],
 }
-
 export type SteamApiList = {
     interfaces: SteamInterface[]
+}
+
+export type SteamApp = {
+    appid: string
+    name: string
+}
+export type SteamAppList = {
+    apps: SteamApp[]
+}
+export type SteamAppListResponse = {
+    applist: SteamAppList
 }
 
 export type SteamFriend = {
@@ -51,6 +61,8 @@ export type SteamGame = {
     playtime_linux_forever: number
     playtime_mac_forever: number
     playtime_windows_forever: number
+    playtime_disconnected: number
+    rtime_last_played: number
 }
 export type SteamRecentGames = {
     games: SteamGame[],
@@ -87,13 +99,54 @@ export type SteamPlayerSummariesResponse = {
     response: SteamPlayers
 }
 
+export type SteamOwnedGames = {
+    game_count: number,
+    games: SteamGame[]
+}
+export type SteamOwnedGamesResponse = {
+    response: SteamOwnedGames
+}
+
+export type SteamAppNew = {
+    gid: string
+    title: string
+    url: string
+    is_external_url: boolean
+    author: string
+    contents: string
+    feedlabel: string
+    date: number
+    feedname: string
+    feed_type: number
+    appid: string
+    img_icon_url?: string
+    name?: string
+    playtime_2weeks?: number
+    playtime_forever?: number
+    playtime_linux_forever?: number
+    playtime_mac_forever?: number
+    playtime_windows_forever?: number
+    playtime_disconnected?: number
+    rtime_last_played?: number
+}
+export type SteamAppNews = {
+    appid: string
+    newsitems: SteamAppNew[]
+    count: number
+}
+export type SteamAppNewsResponse = {
+    appnews: SteamAppNews
+}
+
+
+
 const KEY = '1A092C6AD7E6B2FA4B2C09DEE5849D33'
 
 export async function useSteamGet(interfaceName: string, methodName: string, { version = 'v1', appid = undefined, param = {} }: {
     version?: 'v1' | 'v2',
     appid?: string,
     param?: any
-}) {
+} = {}) {
     return await axios.get(`/api/${interfaceName}/${methodName}/${version}`, {
         params: {
             ...param,
@@ -102,8 +155,17 @@ export async function useSteamGet(interfaceName: string, methodName: string, { v
     })
 }
 
+
+
 export async function useSteamMediaGet(appid: string) {
     return await axios.get(`https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/header.jpg`)
 }
 
-export const useSteamMediaUrl = (appid: string, filename: string) => `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/${filename}`
+export enum MediaJpgType {
+    hero = 'hero_capsule.jpg',
+    header = 'header.jpg',
+    capsult_medium = 'capsule_616x353.jpg',
+    capsult_small = 'capsule_231x87.jpg',
+}
+
+export const useSteamMediaUrl = (appid: string, filename: MediaJpgType) => `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/${filename}`

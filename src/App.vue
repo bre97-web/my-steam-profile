@@ -6,7 +6,7 @@
       </md-standard-icon-button>
     </NavigationBar>
 
-    <main class="flex flex-col flex-grow bg-[var(--md-sys-color-background)] min-h-screen">
+    <main class="flex flex-col flex-grow bg-[var(--md-sys-color-background)] w-full overflow-clip min-h-screen">
       <PageTitle></PageTitle>
       <div class="w-full h-full bg-[var(--md-sys-color-surface-container-lowest)] overflow-scroll">
         <router-view></router-view>

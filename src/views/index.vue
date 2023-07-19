@@ -5,9 +5,14 @@
                 <Tab as="md-tab">Steam News</Tab>
                 <Tab as="md-tab">Following</Tab>
             </TabList>
-            <TabPanels>
-                <TabPanel>1</TabPanel>
-                <TabPanel>2</TabPanel>
+            <TabPanels class="px-2">
+                <TabPanel>
+                    <SteamNews></SteamNews>
+                </TabPanel>
+
+                <TabPanel>
+                    <SteamFollowingNews></SteamFollowingNews>
+                </TabPanel>
             </TabPanels>
         </TabGroup>
 
@@ -21,6 +26,8 @@
 <script setup lang="ts">
 import { TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/vue'
 import RecentGames from '@/components/RecentGames.vue';
+import SteamNews from '@/components/SteamNews.vue';
+import SteamFollowingNews from '@/components/SteamFollowingNews.vue'
 </script>
 
 <style scoped>

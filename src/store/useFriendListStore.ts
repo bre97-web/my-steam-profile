@@ -15,6 +15,9 @@ const useFriendListStore = defineStore('friends_list_store', {
     },
     actions: {
         async request() {
+            if(this.friends.length !== 0 || this.summaries.length !== 0) {
+                return
+            }
             await useSteamGet('ISteamUser', 'GetFriendList', {
                 param: {
                     steamid: '76561198298936075'
@@ -23,18 +26,14 @@ const useFriendListStore = defineStore('friends_list_store', {
                 this.friends = (res.data as SteamFriendsResponse).friendslist.friends
             })
 
-            let ids = this.friends.map(e => e.steamid)
-            console.log(ids);
-            
             await useSteamGet('ISteamUser', 'GetPlayerSummaries', {
                 version: 'v2',
                 param: {
-                    steamids: ids.toString()
+                    steamids: this.friends.map(e => e.steamid).toString()
                 }
             }).then(res => {
                 this.summaries = (res.data as SteamPlayerSummariesResponse).response.players
             })
-            console.log(this.summaries);
         }
     }
 })
