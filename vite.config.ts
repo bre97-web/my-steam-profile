@@ -14,7 +14,7 @@ export default defineConfig({
     vue({
       template: {
         compilerOptions: {
-          isCustomElement: (tag: string): boolean => tag.startsWith('md')
+          isCustomElement: (tag: string): boolean => tag.startsWith('md') || tag.includes('scroll-back-button')
         }
       }
     }),
@@ -24,12 +24,34 @@ export default defineConfig({
   ],
   root: './',
   clearScreen: true,
-  base: '/my-steam-profile',
+  base: '/steamer',
   build: {
     outDir: './docs',
     emptyOutDir: true,
     sourcemap: true,
     manifest: true,
     minify: 'esbuild',
-  }
+  },
+  server: {
+    
+    proxy: {
+      '/api': {
+        target: 'https://api.steampowered.com',
+        changeOrigin: true,
+        ws: true,
+        rewrite: (path) => path.replace(/\/api/, 'https://api.steampowered.com'),
+      }, 
+      '/details': {
+        target: 'https://store.steampowered.com/api',
+        changeOrigin: true,
+        ws: true,
+        rewrite: (path) => path.replace(/\/details/, 'https://store.steampowered.com/api'),
+      },
+      '/steamdb': {
+        target: 'https://store.steampowered.com/api/appdetails',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/\/steamdb/, 'https://store.steampowered.com/api/appdetails'),
+      }
+    }
+  },
 })
