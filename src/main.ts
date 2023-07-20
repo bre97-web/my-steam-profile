@@ -1,17 +1,6 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 
-/**
- * TailwindCSS
- */
-import '@/assets/index.css'
-
-/**
- * Material about
- */
-import 'material-symbols/outlined.css'
-import '@/assets/material-web'
-
 import router from '@/router/index'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import { createPinia } from 'pinia'
