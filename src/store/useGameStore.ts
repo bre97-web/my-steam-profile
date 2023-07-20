@@ -40,6 +40,7 @@ const useGameStore = defineStore('steam_game_store', {
                     steamid: getAccount().steamid,
                     include_appinfo: true,
                     include_played_free_games: true,
+                    include_free_sub: false,
                     skip_unvetted_apps: false,
                     include_extended_appinfo: true,
                 }

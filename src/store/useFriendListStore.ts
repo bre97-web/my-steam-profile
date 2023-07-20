@@ -34,7 +34,32 @@ const useFriendListStore = defineStore('friends_list_store', {
                 }
             }).then(res => {
                 this.summaries = (res.data as SteamPlayerSummariesResponse).response.players
+                this.sort()
             })
+        },
+        async refresh() {
+            await useSteamGet('ISteamUser', 'GetFriendList', {
+                param: {
+                    steamid: getAccount().steamid
+                }
+            }).then(res => {
+                this.friends = (res.data as SteamFriendsResponse).friendslist.friends
+            })
+
+            await useSteamGet('ISteamUser', 'GetPlayerSummaries', {
+                version: 'v2',
+                param: {
+                    steamids: this.friends.map(e => e.steamid).toString()
+                }
+            }).then(res => {
+                this.summaries = (res.data as SteamPlayerSummariesResponse).response.players
+                this.sort()
+            })
+        },
+        sort() {
+            this.friends.sort()
+            this.summaries.sort((x, y) => y.personastate - x.personastate)
+            this.summaries.sort((x, y) => parseInt(y.steamid) - parseInt(x.steamid))
         }
     }
 })

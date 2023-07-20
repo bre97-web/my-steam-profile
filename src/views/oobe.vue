@@ -29,6 +29,10 @@ const isPass = ref<boolean>(true)
 watch(steamid, () => {
     isPass.value = false
 
+    if(steamid.value === '') {
+        return
+    }
+    
     useSteamGet('ISteamUser', 'GetPlayerSummaries', {
         version: 'v2',
         param: {
@@ -46,7 +50,7 @@ const InputSteamId = () => {
             <h1 class="text-6xl font-black text-center">Tell me your SteamID</h1>
             <p class="text-2xl font-semibold text-center">This will not reveal your private data, we only get your ID</p>
             <div class="flex flex-col">
-                <md-filled-text-field value={steamid.value} onInput={(e: InputEvent) => steamid.value = (e.target as EventTarget & HTMLInputElement).value} label="SteamID"></md-filled-text-field>
+                <md-filled-text-field onInput={(e: InputEvent) => steamid.value = (e.target as EventTarget & HTMLInputElement).value} label="SteamID"></md-filled-text-field>
             </div>
                 <div class="text-center">
             {

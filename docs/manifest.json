@@ -1,6 +1,6 @@
 {
   "index.css": {
-    "file": "assets/index-00a4cbe2.css",
+    "file": "assets/index-0bdde964.css",
     "src": "index.css"
   },
   "index.html": {
@@ -8,9 +8,9 @@
       "assets/material-symbols-outlined-b9907482.woff2"
     ],
     "css": [
-      "assets/index-00a4cbe2.css"
+      "assets/index-0bdde964.css"
     ],
-    "file": "assets/index-57d408de.js",
+    "file": "assets/index-747b3c62.js",
     "isEntry": true,
     "src": "index.html"
   },

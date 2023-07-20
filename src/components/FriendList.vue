@@ -23,7 +23,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, computed } from 'vue';
+import { onMounted, computed, onUnmounted } from 'vue';
 import { useFriendListStore } from '@/store/useFriendListStore'
 import moment from 'moment'
 
@@ -37,9 +37,14 @@ const init = async () => {
     await friends.request()
 }
 
+
+var timer: any = null
 onMounted(() => {
     init()
-    
+    timer = setInterval(friends.refresh, 5000)
+})
+onUnmounted(() => {
+    clearInterval(timer)
 })
 </script>
 
