@@ -6,7 +6,7 @@
 
 <script setup lang="tsx">
 import { SteamPlayer, SteamPlayerSummariesResponse, useSteamGet } from '@/hooks/useSteam';
-import { setIsLogin, setSteamId } from '@/scripts/account';
+import { setIsLogin, setSteamId } from '@/utils/account';
 import { ref, watch } from 'vue';
 import { useRouter } from 'vue-router';
 
@@ -115,4 +115,4 @@ const Oobe = () => (
 
 <style scoped>
 
-</style>
+</style>@/utils/account

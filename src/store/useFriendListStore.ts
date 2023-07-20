@@ -1,5 +1,5 @@
 import { SteamFriend, SteamFriendsResponse, SteamPlayer, SteamPlayerSummariesResponse, useSteamGet } from "@/hooks/useSteam";
-import { getAccount } from "@/scripts/account";
+import { getAccount } from "@/utils/account";
 import { defineStore } from "pinia";
 
 /**
