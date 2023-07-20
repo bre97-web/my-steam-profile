@@ -35,10 +35,10 @@ export default defineConfig({
   server: {
     
     proxy: {
-      '^/api': {
+      '^/api/': {
         target: 'https://api.steampowered.com',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, 'https://api.steampowered.com'),
+        rewrite: (path) => path.replace(/^\/api/, ''),
       }, 
       '^/steamdb': {
         target: 'https://store.steampowered.com/api/appdetails',

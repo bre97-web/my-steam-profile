@@ -19,7 +19,7 @@ import PageTitle from './components/PageTitle.vue';
 import { useThemeStore } from './store/useThemeStore';
 import { onBeforeMount, onMounted, provide, ref } from 'vue';
 import ReviewPanel from '@/components/ReviewPanel.vue'
-import { getAccount } from './scripts/account';
+import { getAccount } from './utils/account';
 import { useRouter } from 'vue-router';
 
 /**
@@ -44,4 +44,4 @@ onBeforeMount(() => {
 })
 </script>
 
-<style scoped></style>
+<style scoped></style>./utils/account

@@ -1,5 +1,5 @@
 import { SteamApp, SteamAppListResponse, SteamGame, SteamOwnedGamesResponse, useSteamGet } from "@/hooks/useSteam";
-import { getAccount } from "@/scripts/account";
+import { getAccount } from "@/utils/account";
 import { defineStore } from "pinia";
 
 const useGameStore = defineStore('steam_game_store', {

@@ -29,7 +29,7 @@
 
 <script setup lang="ts">
 import { SteamPlayer, SteamPlayerSummariesResponse, useSteamGet } from '@/hooks/useSteam';
-import { getAccount } from '@/scripts/account';
+import { getAccount } from '@/utils/account';
 import moment from 'moment';
 import { onMounted, ref } from 'vue';
 import LogoutButton from './LogoutButton.vue';
@@ -51,4 +51,4 @@ onMounted(() => {
 
 <style scoped>
 
-</style>
+</style>@/utils/account

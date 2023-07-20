@@ -257,11 +257,23 @@ export type SteamAppDetails = {
 
 const KEY = '1A092C6AD7E6B2FA4B2C09DEE5849D33'
 
+const service = axios.create({
+    baseURL: '/api',
+    timeout: 4500,
+    headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': '*',
+        'Access-Control-Allow-Credentials': true,
+    },
+    responseType: 'json',
+})
+
 export async function useSteamGet(interfaceName: string, methodName: string, { version = 'v1', param = {} }: {
     version?: 'v1' | 'v2',
     param?: any
 } = {}) {
-    return await axios.get(`/api/${interfaceName}/${methodName}/${version}`, {
+    return await service.get(`/${interfaceName}/${methodName}/${version}`, {
         params: {
             ...param,
             key: KEY

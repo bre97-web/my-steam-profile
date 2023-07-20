@@ -16,7 +16,7 @@
 
 <script setup lang="ts">
 import { MediaJpgType, SteamGame, useSteamMediaUrl } from '@/hooks/useSteam';
-import { getAccount } from '@/scripts/account';
+import { getAccount } from '@/utils/account';
 import { useFocusGameStore } from '@/store/useFocusGameStore';
 import moment from 'moment';
 
@@ -27,4 +27,4 @@ const props = defineProps<{
 const focusGame = useFocusGameStore()
 </script>
 
-<style scoped></style>
+<style scoped></style>@/utils/account

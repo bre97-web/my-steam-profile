@@ -1,5 +1,5 @@
 import { SteamAppNew, SteamAppNewsResponse, SteamOwnedGamesResponse, useSteamGet } from "@/hooks/useSteam";
-import { getAccount } from "@/scripts/account";
+import { getAccount } from "@/utils/account";
 import { defineStore } from "pinia";
 
 /**
