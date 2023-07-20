@@ -9,7 +9,7 @@ import '@/assets/index.css'
 /**
  * Material about
  */
-import 'material-symbols'
+import 'material-symbols/outlined.css'
 import '@/assets/material-web'
 
 import router from '@/router/index'
