@@ -257,14 +257,17 @@ export type SteamAppDetails = {
 
 const KEY = '1A092C6AD7E6B2FA4B2C09DEE5849D33'
 
-const service = axios.create({
-    baseURL: '/api',
+const apiService = axios.create({
+    baseURL: process.env.NODE_ENV === 'development' ? '/api' : 'https://api.steampowered.com',
     timeout: 4500,
     headers: {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Headers': '*',
+        'Access-Control-Expose-Headers': 'FooBar',
         'Access-Control-Allow-Credentials': true,
+        'Access-Control-Allow-Methods': 'POST,GET,OPTIONS',
+        'Access-Control-Request-Headers': 'X-Custom-Header'
     },
     responseType: 'json',
 })
@@ -273,7 +276,7 @@ export async function useSteamGet(interfaceName: string, methodName: string, { v
     version?: 'v1' | 'v2',
     param?: any
 } = {}) {
-    return await service.get(`/${interfaceName}/${methodName}/${version}`, {
+    return await apiService.get(`/${interfaceName}/${methodName}/${version}`, {
         params: {
             ...param,
             key: KEY
@@ -281,7 +284,28 @@ export async function useSteamGet(interfaceName: string, methodName: string, { v
     })
 }
 
-
+const storeService = axios.create({
+    baseURL: process.env.NODE_ENV === 'development' ? '/steamstore' : 'https://store.steampowered.com/api/appdetails',
+    timeout: 4500,
+    headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': '*',
+        'Access-Control-Expose-Headers': 'FooBar',
+        'Access-Control-Allow-Credentials': true,
+        'Access-Control-Allow-Methods': 'POST,GET,OPTIONS',
+        'Access-Control-Request-Headers': 'X-Custom-Header'
+    },
+})
+export async function useSteamStoreGet(interfaceName: string, { param = {} }: {
+    param?: any
+} = {}) {
+    return await storeService.get(`/${interfaceName}`, {
+        params: {
+            ...param,
+        }
+    })
+}
 
 export async function useSteamMediaGet(appid: string) {
     return await axios.get(`https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/header.jpg`)
