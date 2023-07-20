@@ -9,7 +9,7 @@
       </div>      
     </main>
 
-    <div class="hidden lg:block w-full max-w-md">1</div>
+    <ReviewPanel></ReviewPanel>
   </div>
 </template>
 
@@ -18,7 +18,7 @@ import NavigationBar from '@/components/NavigationBar.vue'
 import PageTitle from './components/PageTitle.vue';
 import { useThemeStore } from './store/useThemeStore';
 import { onMounted, provide, ref } from 'vue';
-
+import ReviewPanel from '@/components/ReviewPanel.vue'
 
 /**
  * Sync Dark Mode

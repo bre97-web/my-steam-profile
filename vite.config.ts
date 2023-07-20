@@ -41,6 +41,17 @@ export default defineConfig({
         ws: true,
         rewrite: (path) => path.replace(/\/api/, 'https://api.steampowered.com'),
       }, 
+      '/details': {
+        target: 'https://store.steampowered.com/api',
+        changeOrigin: true,
+        ws: true,
+        rewrite: (path) => path.replace(/\/details/, 'https://store.steampowered.com/api'),
+      },
+      '/steamdb': {
+        target: 'https://store.steampowered.com/api/appdetails',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/\/steamdb/, 'https://store.steampowered.com/api/appdetails'),
+      }
     }
   },
 })

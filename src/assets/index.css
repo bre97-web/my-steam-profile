@@ -32,6 +32,7 @@
     td {
         @apply text-[var(--md-sys-color-on-surface)] text-sm;
     }
+    
     :root {
         --md-sys-color-background: #faf8ff;
         --md-sys-color-on-background: #1a1b21;

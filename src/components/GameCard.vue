@@ -1,5 +1,5 @@
 <template>
-    <li class="window relative rounded-xl max-w-max overflow-clip">
+    <li class="window relative rounded-xl max-w-max overflow-clip" @click="focusGame.setFocusGame(props.game)">
         <img class="scaleWindow" :src="useSteamMediaUrl(props.game.appid, MediaJpgType.header)" />
         <div class="innerWindow absolute w-full h-full bg-gradient-to-t from-black to-transparent"></div>
         <h1 class="innerWindow absolute w-full text-center invert dark:invert-0">
@@ -17,11 +17,14 @@
 <script setup lang="ts">
 import { MediaJpgType, SteamGame, useSteamMediaUrl } from '@/hooks/useSteam';
 import { getAccount } from '@/scripts/account';
+import { useFocusGameStore } from '@/store/useFocusGameStore';
 import moment from 'moment';
 
 const props = defineProps<{
-    game: SteamGame
+    game: SteamGame,
 }>()
+
+const focusGame = useFocusGameStore()
 </script>
 
 <style scoped></style>

@@ -140,6 +140,119 @@ export type SteamAppNewsResponse = {
     appnews: SteamAppNews
 }
 
+export type SteamAppDetails = {
+    type: string
+    name: string
+    steam_appid: string
+    required_age: string
+    is_free: true
+    dlc: string
+    detailed_description: string
+    about_the_game: string
+    short_description: string
+    supported_languages: string
+    reviews: string
+    header_image: string
+    capsule_image: string
+    capsule_imagev5: string
+    website: string
+    pc_requirements: {
+        minimum: string
+    }
+    mac_requirements: {
+        minimum: string
+    }
+    linux_requirements: {
+        minimum: string
+    }
+    developers: string[]
+    publishers: string[]
+    packages: number[]
+    package_groups: [
+        {
+            name: string
+            title: string
+            description: string
+            selection_text: string
+            save_text: string
+            display_type: number
+            is_recurring_subscription: string
+            subs: [
+                {
+                    packageid: number
+                    percent_savings_text: string
+                    percent_savings: number
+                    option_text: string
+                    option_description: string
+                    can_get_free_license: string
+                    is_free_license: true
+                    price_in_cents_with_discount: number
+                }
+            ]
+        }
+    ]
+    platforms: {
+        windows: boolean
+        mac: boolean
+        linux: boolean
+    }
+    metacritic: {
+        score: number
+        url: string
+    }
+    categories: [
+        {
+            id: number
+            description: string
+        }
+    ]
+    genres: [
+        {
+            id: string
+            description: string
+        }
+    ]
+    screenshots: [
+        {
+            id: number
+            path_thumbnail: string
+            path_full: string
+        }
+    ]
+    movies: [
+        {
+            id: number
+            name: string
+            thumbnail: string
+            webm: {
+                480: string
+                max: string
+            }
+            mp4: {
+                480: string
+                max: string
+            }
+            highlight: true
+        }
+    ]
+    recommendations: {
+        total: number
+    }
+    release_date: {
+        coming_soon: false
+        date: string
+    }
+    support_info: {
+        url: string
+        email: string
+    }
+    background: string
+    background_raw: string
+    content_descriptors: {
+        ids: []
+        notes: string | null
+    }
+}
 
 
 const KEY = '1A092C6AD7E6B2FA4B2C09DEE5849D33'
