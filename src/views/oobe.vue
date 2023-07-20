@@ -36,7 +36,6 @@ watch(steamid, () => {
         }
     }).then(res => {
         targetPlayer.value = (res.data as SteamPlayerSummariesResponse).response.players[0]
-        isPass.value = true
     })
 })
 const InputSteamId = () => {
@@ -73,7 +72,7 @@ const InputSteamId = () => {
 
 const AllDone = () => (
     <div>
-
+        <h1 class="text-6xl font-black text-center">All done, start Steamer!</h1>
     </div>
 )
 
