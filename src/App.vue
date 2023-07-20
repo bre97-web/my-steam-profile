@@ -17,8 +17,10 @@
 import NavigationBar from '@/components/NavigationBar.vue'
 import PageTitle from './components/PageTitle.vue';
 import { useThemeStore } from './store/useThemeStore';
-import { onMounted, provide, ref } from 'vue';
+import { onBeforeMount, onMounted, provide, ref } from 'vue';
 import ReviewPanel from '@/components/ReviewPanel.vue'
+import { getAccount } from './scripts/account';
+import { useRouter } from 'vue-router';
 
 /**
  * Sync Dark Mode
@@ -33,6 +35,13 @@ const contentWindowRef = ref()
  * Provide contentWindowRef
  */
 provide('contentWindowRef', contentWindowRef)
+
+const router = useRouter()
+onBeforeMount(() => {
+  if(getAccount().steamid === '') {
+    router.push('/oobe')
+  }
+})
 </script>
 
 <style scoped></style>

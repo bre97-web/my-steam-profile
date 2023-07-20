@@ -40,7 +40,7 @@ const useGameStore = defineStore('steam_game_store', {
                     steamid: getAccount().steamid,
                     include_appinfo: true,
                     include_played_free_games: true,
-                    skip_unvetted_apps: true,
+                    skip_unvetted_apps: false,
                     include_extended_appinfo: true,
                 }
             }).then(res => {
@@ -57,7 +57,7 @@ const useGameStore = defineStore('steam_game_store', {
             this.games.recent = []
             useSteamGet('IPlayerService', 'GetRecentlyPlayedGames', {
                 param: {
-                    steamid: '76561198298936075'
+                    steamid: getAccount().steamid
                 }
             }).then(res => {
                 this.games.recent.push(...(res.data as SteamOwnedGamesResponse).response.games)

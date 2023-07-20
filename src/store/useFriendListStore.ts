@@ -1,4 +1,5 @@
 import { SteamFriend, SteamFriendsResponse, SteamPlayer, SteamPlayerSummariesResponse, useSteamGet } from "@/hooks/useSteam";
+import { getAccount } from "@/scripts/account";
 import { defineStore } from "pinia";
 
 /**
@@ -20,7 +21,7 @@ const useFriendListStore = defineStore('friends_list_store', {
             }
             await useSteamGet('ISteamUser', 'GetFriendList', {
                 param: {
-                    steamid: '76561198298936075'
+                    steamid: getAccount().steamid
                 }
             }).then(res => {
                 this.friends = (res.data as SteamFriendsResponse).friendslist.friends

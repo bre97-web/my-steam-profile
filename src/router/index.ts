@@ -4,6 +4,7 @@ import index from '@/views/index.vue'
 import apiList from "@/views/apiList.vue"
 import friends from '@/views/friends.vue'
 import settings from '@/views/settings.vue'
+import oobe from "@/views/oobe.vue"
 
 const routes: RouteRecordRaw[] = [
     {
@@ -20,6 +21,11 @@ const routes: RouteRecordRaw[] = [
         path: '/settings',
         name: 'Settings',
         component: settings
+    },
+    {
+        path: '/oobe',
+        name: 'OOBE',
+        component: oobe
     },
     {
         path: '/api-list',

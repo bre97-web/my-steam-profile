@@ -1,8 +1,13 @@
 import { reactive, watch } from "vue";
 
-const account = reactive(JSON.parse(localStorage.getItem('account') as string) || {
+type Account = {
+    isLogin: boolean
+    steamid: string
+}
+
+const account: Account = reactive(JSON.parse(localStorage.getItem('account') as string) || {
     isLogin: false,
-    steamid: '76561198298936075' as string
+    steamid: '' as string
 })
 
 watch(account, () => {
@@ -12,6 +17,9 @@ watch(account, () => {
 const setSteamId = (e: string) => {
     account.steamid = e
 }
+const setIsLogin = (e: boolean) => {
+    account.isLogin = e
+}
 const getAccount = () => account
 
-export { getAccount, setSteamId }
+export { getAccount, setSteamId, setIsLogin }
