@@ -40,10 +40,10 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
       }, 
-      '^/steamdb': {
-        target: 'https://store.steampowered.com/api/appdetails',
+      '^/steamstore': {
+        target: 'https://store.steampowered.com/api',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/steamdb/, 'https://store.steampowered.com/api/appdetails'),
+        rewrite: (path) => path.replace(/^\/steamstore/, ''),
       }
     }
   },

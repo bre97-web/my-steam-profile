@@ -28,9 +28,8 @@
 </template>
 
 <script setup lang="ts">
-import { SteamAppDetails } from '@/hooks/useSteam';
+import { SteamAppDetails, useSteamStoreGet } from '@/hooks/useSteam';
 import { useFocusGameStore } from '@/store/useFocusGameStore';
-import axios from 'axios';
 import { ref, watch } from 'vue';
 import ReviewGameImg from '@/components/ReviewGameImg.vue'
 import ReviewGameTitle from './ReviewGameTitle.vue';
@@ -51,8 +50,8 @@ watch(() => focusGame.getFocusGame, () => {
 const data = ref<SteamAppDetails | null>(null)
 
 const getGameInfo = (appid: string) => {
-    axios.get('/steamdb', {
-        params: {
+    useSteamStoreGet('appdetails', {
+        param: {
             appids: appid
         }
     }).then(res => {
