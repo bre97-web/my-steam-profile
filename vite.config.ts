@@ -7,7 +7,7 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 export default defineConfig({
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
+      '@': fileURLToPath(new URL('./src/renderer/src', import.meta.url))
     }
   },
   plugins: [
@@ -22,11 +22,11 @@ export default defineConfig({
       isCustomElement: (tag: string): boolean => tag.startsWith('md-')
     })
   ],
-  root: './',
+  root: './src/renderer/',
   clearScreen: true,
   base: '/steamer',
   build: {
-    outDir: './docs',
+    outDir: '../../docs',
     emptyOutDir: true,
     sourcemap: true,
     manifest: true,
