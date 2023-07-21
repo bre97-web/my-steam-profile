@@ -267,7 +267,6 @@ const apiService = axios.create({
         'Access-Control-Expose-Headers': 'FooBar',
         'Access-Control-Allow-Credentials': true,
         'Access-Control-Allow-Methods': 'POST,GET,OPTIONS',
-        'Access-Control-Request-Headers': 'X-Custom-Header'
     },
     responseType: 'json',
 })
@@ -294,7 +293,6 @@ const storeService = axios.create({
         'Access-Control-Expose-Headers': 'FooBar',
         'Access-Control-Allow-Credentials': true,
         'Access-Control-Allow-Methods': 'POST,GET,OPTIONS',
-        'Access-Control-Request-Headers': 'X-Custom-Header'
     },
 })
 export async function useSteamStoreGet(interfaceName: string, { param = {} }: {
